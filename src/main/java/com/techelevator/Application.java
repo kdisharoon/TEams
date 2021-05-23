@@ -85,10 +85,10 @@ public class Application {
         deanJohnson.setHireDate(today);
         employees.add(0, deanJohnson);
 
-        Employee angieSmith = new Employee(2, "Angie", "Smith", "asmith@teams.com", departments.get(2), today);
+        Employee angieSmith = new Employee(2, "Angie", "Smith", "asmith@teams.com", getDepartmentByName("Engineering"), today);
         employees.add(1, angieSmith);
 
-        Employee margaretThompson = new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments.get(0), today);
+        Employee margaretThompson = new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", getDepartmentByName("Marketing"), today);
         employees.add(2, margaretThompson);
 
         angieSmith.raiseSalary(10.0);
@@ -147,6 +147,16 @@ public class Application {
             System.out.print(projCollection.get(thisProject).getTeamMembers().size() + "\n");
         }
 
+    }
+
+    private Department getDepartmentByName(String deptName) {
+        for (Department dept : departments) {
+            if ( deptName.equals( dept.getName() ) ) {
+                return dept;
+            }
+
+        }
+        return null;
     }
 
 }
