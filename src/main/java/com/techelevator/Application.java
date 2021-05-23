@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +73,8 @@ public class Application {
      * Create employees and add them to the collection of employees
      */
     private void createEmployees() {
+        LocalDate today = LocalDate.now();
+
         Employee deanJohnson = new Employee();
         deanJohnson.setEmployeeId(1);
         deanJohnson.setFirstName("Dean");
@@ -79,12 +82,15 @@ public class Application {
         deanJohnson.setEmail("djohnson@teams.com");
         deanJohnson.setSalary(60000.00);
         deanJohnson.setDepartment(departments.get(2));
-        deanJohnson.setHireDate("08/21/2020");
+        deanJohnson.setHireDate(today);
         employees.add(0, deanJohnson);
-        Employee angieSmith = new Employee(2, "Angie", "Smith", "asmith@teams.com", departments.get(2), "08/21/2020");
+
+        Employee angieSmith = new Employee(2, "Angie", "Smith", "asmith@teams.com", departments.get(2), today);
         employees.add(1, angieSmith);
-        Employee margaretThompson = new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments.get(0), "08/21/2020");
+
+        Employee margaretThompson = new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments.get(0), today);
         employees.add(2, margaretThompson);
+
         angieSmith.raiseSalary(10.0);
     }
 
@@ -104,7 +110,7 @@ public class Application {
      * Create the 'TEams' project.
      */
     private void createTeamsProject() {
-        Project teamsProject = new Project("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
+        Project teamsProject = new Project("TEams", "Project Management Software", LocalDate.now(), LocalDate.now().plusDays(30));
 
         for (Employee emp : employees) {
             if (emp.getDepartment().getDepartmentId() == 3) {
@@ -120,7 +126,8 @@ public class Application {
      * Create the 'Marketing Landing Page' project.
      */
     private void createLandingPageProject() {
-        Project landingPageProject = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "10/17/2020");
+        Project landingPageProject = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", LocalDate.now().plusDays(31), LocalDate.now());
+        landingPageProject.setDueDate(landingPageProject.getStartDate().plusDays(7));
         for (Employee emp : employees) {
             if (emp.getDepartment().getDepartmentId() == 1) {
                 landingPageProject.addTeamMember(emp);

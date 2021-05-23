@@ -1,16 +1,17 @@
 package com.techelevator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
     private String name;
     private String description;
-    private String startDate;
-    private String dueDate;
+    private LocalDate startDate;
+    private LocalDate dueDate;
     private List<Employee> teamMembers = new ArrayList<Employee>();
 
-    public Project(String name, String description, String startDate, String dueDate) {
+    public Project(String name, String description, LocalDate startDate, LocalDate dueDate) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -33,19 +34,19 @@ public class Project {
         this.description = description;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 

@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.time.LocalDate;
+
 public class Employee {
     private long employeeId;
     private String firstName;
@@ -7,10 +9,10 @@ public class Employee {
     private String email;
     private double salary;
     private Department department;
-    private String hireDate;
+    private LocalDate hireDate;
     private static final double startingSalary = 60000.00;
 
-    public Employee(long employeeId, String firstName, String lastName, String email, Department department, String hireDate) {
+    public Employee(long employeeId, String firstName, String lastName, String email, Department department, LocalDate hireDate) {
         this.salary = startingSalary;
         this.employeeId = employeeId;
         this.firstName = firstName;
@@ -80,11 +82,11 @@ public class Employee {
         this.department = department;
     }
 
-    public String getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(String hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 }
